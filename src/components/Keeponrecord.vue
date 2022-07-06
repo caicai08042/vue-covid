@@ -3,7 +3,7 @@
     <el-divider content-position="center">备案信息</el-divider>
     <div class="footer">
       <a href="https://beian.miit.gov.cn" target="_blank">闽ICP备2021009795号-2</a>&nbsp;
-      <a href="https://github.com/caicai08042/vue-covid19" target="_blank">Github地址</a>
+      <a href="https://github.com/caicai08042/vue-covid" target="_blank">Github地址</a>
     </div>
   </div>
 </template>

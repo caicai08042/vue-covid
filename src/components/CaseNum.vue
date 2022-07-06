@@ -25,7 +25,7 @@
           <strong style="color: Crimson">{{ covid.confirmedCount }}</strong
           ><br />
           <p>
-            较昨日<em>{{ numZore(covid.confirmedIncr) }}</em>
+            较昨日<em>{{numZore(covid.confirmedIncr) }}</em>
           </p>
         </el-col>
         <el-col :span="8" class="info">
@@ -57,7 +57,7 @@
           <strong style="color: OrangeRed">{{ covid.seriousCount }}</strong
           ><br />
           <p>
-            较昨日<em>{{ covid.seriousIncr }}</em>
+            较昨日<em>{{ numZore(covid.seriousIncr) }}</em>
           </p>
         </el-col>
       </el-row>
@@ -97,7 +97,12 @@ export default {
       return YY + MM + DD + hh + mm;
     },
     numZore(num) {
-      return num > 0 ? "+" + num : "-" + num;
+      if(num === 0){
+        return num
+      }else{
+        return num > 0 ? "+" + num : "-" + num;
+      }
+      
     },
   },
   mounted() {
