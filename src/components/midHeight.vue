@@ -12,7 +12,7 @@
           <span slot="label"><i class="el-icon-info"></i> 中风险地区</span>
           <span style="font-size: 16px;color:red">现存：{{midL}}个</span>
           <div>
-            <el-table :data="mid" style="width: 100%" height="200">
+            <el-table :data="mid" style="width: 100%" height="300">
               <el-table-column prop="title" label="地区" width="auto">
               </el-table-column>
             </el-table>
@@ -22,7 +22,7 @@
           <span slot="label"><i class="el-icon-warning"></i> 高风险地区</span>
           <span style="font-size: 16px;color:red">现存：{{highL}}个</span>
           <div>
-            <el-table :data="high" style="width: 100%" height="200">
+            <el-table :data="high" style="width: 100%" height="300">
               <el-table-column prop="title" label="地区" width="auto">
               </el-table-column>
             </el-table>
