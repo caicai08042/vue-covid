@@ -53,6 +53,7 @@
                 margin-left: 5px;
                 padding: 0 5px;
               "
+              type="danger"
               ><span v-if="mh">{{ highL }}</span
               ><span v-if="!mh">???</span></el-tag
             ></span
