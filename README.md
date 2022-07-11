@@ -17,12 +17,14 @@ npm run serve
 ```
 npm run build
 ```
-### Run your tests
-```
-npm run test
-```
-### Lints and fixes files
-```
-npm run lint
-```
 
+git config --global --unset http.proxy 
+git config --global --unset https.proxy 
+
+### v.1.1.1
+2022-7-11更新：
+更新页面的ui效果，更好看了啦！！！
+添加了加载动画
+解决了某个小bug以及tabs切换数据闪烁问题
+
+## 这个项目停更啦，以后应该不会再更新了

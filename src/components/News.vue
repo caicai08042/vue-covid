@@ -1,12 +1,21 @@
 <template>
   <div class="news">
-    <div class="container">
-      <div class="title">
-        <i></i>
-        <span>疫情最新资讯</span>
-      </div>
-    </div>
-    <el-card shadow="always">
+    <el-row style="height: 34px">
+      <el-col :span="24">
+        <div class="title">
+          <i></i>
+          <span>疫情最新资讯</span>
+        </div>
+      </el-col>
+    </el-row>
+    <el-card
+      shadow="always"
+      v-loading="loading"
+      element-loading-text="努力加载中..."
+      element-loading-spinner="el-icon-loading"
+      element-loading-background="rgba(255, 255, 255, 1)"
+      style="min-height: 290px"
+    >
       <el-collapse accordion>
         <el-collapse-item
           v-for="(item, index) in newslist"
@@ -19,7 +28,7 @@
             <br />
             <a
               :href="item.sourceUrl"
-              style="text-decoration: none;color:blue"
+              style="text-decoration: none; color: blue"
               target="_blank"
               >点击查看具体新闻</a
             >&nbsp;&nbsp;&nbsp;&nbsp;
@@ -38,36 +47,47 @@ export default {
   props: ["newslist"],
   name: "News",
   data() {
-    return {};
+    return {
+      loading: true,
+    };
+  },
+  watch: {
+    newslist() {
+      this.loading = false;
+    },
   },
 };
 </script>
 
 <style scoped>
-.container /deep/ div {
-  /* margin-left: 8px; */
-  font-size: 0.16rem;
-}
 .news {
   padding: 10px;
   background: #fff;
-  /* border-bottom: 1px solid #f1f1f1; */
+
+  max-width: 800px;
+  margin: 0 auto;
 }
 .title {
-  padding: 10px;
-  font-size: 0.16rem;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.08rem 0 0.07rem;
+  line-height: 0.16rem;
+  display: inline-table;
 }
-
 .title i {
   display: inline-block;
   width: 0.1rem;
-  height: 0.16rem;
-  margin-right: 0.03rem;
+  height: 0.17rem;
+
   vertical-align: middle;
-  background: #70ffe0;
+  background: rgb(53, 230, 121);
   border-radius: 0.04rem;
+  margin-left: 10px;
+  vertical-align: top;
 }
 .title span {
-  margin-left: 10px;
+  margin-left: 15px;
+  font-size: 0.16rem;
+  vertical-align: top;
 }
 </style>

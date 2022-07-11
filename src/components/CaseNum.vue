@@ -1,27 +1,20 @@
 <template>
   <div class="num">
-    <el-row style="height:34px">
-      <el-col :span="1">
+    <el-row style="height: 34px">
+      <el-col :span="24">
         <div class="title">
           <i></i>
-        </div>
-      </el-col>
-      <el-col :span="12">
-        <div class="title">
           <span>全国数据统计时间截至</span>
-        </div>
-      </el-col>
-      <el-col :span="11">
-        <div class="title">
           <span v-if="loading">
             {{ formatDate(covid.modifyTime) }}
           </span>
           <span v-if="!loading">
-            <el-skeleton-item variant="p" style="width: 130px" animated/>
+            <el-skeleton-item variant="p" style="width: 130px" animated />
           </span>
         </div>
       </el-col>
     </el-row>
+
     <el-card shadow="always">
       <el-row :gutter="10">
         <el-col :span="8" class="info">
@@ -44,7 +37,9 @@
         </el-col>
         <el-col :span="8" class="info">
           <span>累计确诊</span><br />
-          <strong style="color: Crimson" v-if="loading">{{ covid.confirmedCount }}</strong>
+          <strong style="color: Crimson" v-if="loading">{{
+            covid.confirmedCount
+          }}</strong>
           <strong style="color: HotPink" v-if="!loading"
             ><el-skeleton-item
               variant="p"
@@ -61,7 +56,9 @@
         </el-col>
         <el-col :span="8" class="info">
           <span>累计境外输入</span><br />
-          <strong style="color: MediumBlue" v-if="loading">{{ covid.suspectedCount }}</strong>
+          <strong style="color: MediumBlue" v-if="loading">{{
+            covid.suspectedCount
+          }}</strong>
           <strong style="color: HotPink" v-if="!loading"
             ><el-skeleton-item
               variant="p"
@@ -78,7 +75,9 @@
         </el-col>
         <el-col :span="8" class="info">
           <span>累计治愈</span><br />
-          <strong style="color: MediumSeaGreen" v-if="loading">{{ covid.curedCount }}</strong>
+          <strong style="color: MediumSeaGreen" v-if="loading">{{
+            covid.curedCount
+          }}</strong>
           <strong style="color: HotPink" v-if="!loading"
             ><el-skeleton-item
               variant="p"
@@ -95,7 +94,9 @@
         </el-col>
         <el-col :span="8" class="info">
           <span>累计死亡</span><br />
-          <strong style="color: Maroon" v-if="loading">{{ covid.deadCount }}</strong>
+          <strong style="color: Maroon" v-if="loading">{{
+            covid.deadCount
+          }}</strong>
           <strong style="color: HotPink" v-if="!loading"
             ><el-skeleton-item
               variant="p"
@@ -112,7 +113,9 @@
         </el-col>
         <el-col :span="8" class="info">
           <span>现存无症状</span><br />
-          <strong style="color: OrangeRed" v-if="loading">{{ covid.seriousCount }}</strong>
+          <strong style="color: OrangeRed" v-if="loading">{{
+            covid.seriousCount
+          }}</strong>
           <strong style="color: HotPink" v-if="!loading"
             ><el-skeleton-item
               variant="p"
@@ -128,6 +131,12 @@
           </p>
         </el-col>
       </el-row>
+      <div style="margin: 10px 0 0 15px; color: rgb(170, 170, 170)">
+        <span
+          ><i class="el-icon-warning-outline"></i>
+          数据来子第三方平台，可能与实际情况存在误差。</span
+        >
+      </div>
     </el-card>
   </div>
 </template>
@@ -148,8 +157,9 @@ export default {
     };
   },
   methods: {
-    formatDate(date) {
-      var date = new Date(date);
+    formatDate(time) {
+      var date = new Date(time);
+      //console.log(date)
       var YY = date.getFullYear() + "-";
       var MM =
         (date.getMonth() + 1 < 10
@@ -171,12 +181,10 @@ export default {
       }
     },
   },
-  mounted() {
-    //console.log(this.covid);
-  },
+  mounted() {},
   watch: {
     covid() {
-       this.loading = true;
+      this.loading = true;
     },
   },
 };
@@ -185,13 +193,11 @@ export default {
 .num {
   padding: 10px;
   background-color: #fff;
+  max-width: 800px;
+  margin: 0 auto;
 }
-.container /deep/ div {
-  margin-left: 8px;
-  font-size: 0.16rem;
-}
+
 .title {
-  /* display: flex; */
   align-items: center;
   justify-content: space-between;
   padding: 0.08rem 0 0.07rem;
@@ -201,17 +207,19 @@ export default {
 .title i {
   display: inline-block;
   width: 0.1rem;
-  height: 0.16rem;
-  /* margin-right: 0.03rem; */
+  height: 0.17rem;
   vertical-align: middle;
   background: #30dddd;
   border-radius: 0.04rem;
   margin-left: 10px;
+  vertical-align: top;
 }
 .title span {
   margin-left: 15px;
   font-size: 0.16rem;
+  vertical-align: top;
 }
+
 .info {
   text-align: center;
   margin-top: 10px;

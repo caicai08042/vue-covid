@@ -1,28 +1,76 @@
 <template>
   <div class="midHeight">
-    <div class="container">
-      <div class="title">
-        <i></i>
-        <span>中高风险地区</span>
-      </div>
-    </div>
+    <el-row style="height: 34px">
+      <el-col :span="24">
+        <div class="title">
+          <i></i>
+          <span>中高风险地区概况</span>
+        </div>
+      </el-col>
+    </el-row>
     <el-card shadow="always">
       <el-tabs v-model="activeName" stretch class="tabs">
         <el-tab-pane name="mid">
-          <span slot="label"><i class="el-icon-info"></i> 中风险地区</span>
-          <span style="font-size: 16px;color:red">现存：{{midL}}个</span>
-          <div>
-            <el-table :data="mid" style="width: 100%" height="300">
+          <span slot="label"
+            ><i class="el-icon-info"></i> 中风险地区
+            <el-tag
+              style="
+                height: 24px;
+                line-height: 24px;
+                margin-left: 5px;
+                padding: 0 5px;
+              "
+              type="warning"
+              ><span v-if="mh">{{ midL }}</span
+              ><span v-if="!mh">???</span></el-tag
+            ></span
+          >
+          <div
+            v-loading="loading"
+            element-loading-text="努力加载中..."
+            element-loading-spinner="el-icon-loading"
+            element-loading-background="rgba(255, 255, 255, 1)"
+            style="min-height: 290px"
+          >
+            <el-table
+              :data="mid"
+              style="width: 100%"
+              height="300"
+              v-if="activeName === 'mid'"
+            >
               <el-table-column prop="title" label="地区" width="auto">
               </el-table-column>
             </el-table>
           </div>
         </el-tab-pane>
         <el-tab-pane name="height">
-          <span slot="label"><i class="el-icon-warning"></i> 高风险地区</span>
-          <span style="font-size: 16px;color:red">现存：{{highL}}个</span>
-          <div>
-            <el-table :data="high" style="width: 100%" height="300">
+          <span slot="label"
+            ><i class="el-icon-warning"></i> 高风险地区
+            <el-tag
+              style="
+                height: 24px;
+                line-height: 24px;
+                margin-left: 5px;
+                padding: 0 5px;
+              "
+              ><span v-if="mh">{{ highL }}</span
+              ><span v-if="!mh">???</span></el-tag
+            ></span
+          >
+
+          <div
+            v-loading="loading"
+            element-loading-text="努力加载中..."
+            element-loading-spinner="el-icon-loading"
+            element-loading-background="rgba(255, 255, 255, 1)"
+            style="min-height: 290px"
+          >
+            <el-table
+              :data="high"
+              style="width: 100%"
+              height="300"
+              v-if="activeName === 'height'"
+            >
               <el-table-column prop="title" label="地区" width="auto">
               </el-table-column>
             </el-table>
@@ -35,13 +83,15 @@
 
 <script>
 export default {
-  props: ["midHeights",'highL','midL'],
+  props: ["midHeights", "highL", "midL"],
   name: "midHeight",
   data() {
     return {
       activeName: "mid",
       mid: [],
       high: [],
+      loading: true,
+      mh: false,
     };
   },
   watch: {
@@ -67,38 +117,43 @@ export default {
       }
       this.mid = c;
       this.high = b;
-      //console.log(this.mid);
+      this.loading = false;
+      this.mh = true;
     },
   },
 };
 </script>
 
 <style scoped>
-.container /deep/ div {
-  /* margin-left: 8px; */
-  font-size: 0.16rem;
-}
 .midHeight {
   padding: 10px;
   background: #fff;
-  /* border-bottom: 1px solid #f1f1f1; */
+
+  max-width: 800px;
+  margin: 0 auto;
 }
 .title {
-  padding: 10px;
-  font-size: 0.16rem;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.08rem 0 0.07rem;
+  line-height: 0.16rem;
+  display: inline-table;
 }
-
 .title i {
   display: inline-block;
   width: 0.1rem;
-  height: 0.16rem;
-  margin-right: 0.03rem;
+  height: 0.17rem;
+
   vertical-align: middle;
-  background: #d85933;
+  background: rgb(218, 42, 71);
   border-radius: 0.04rem;
+  margin-left: 10px;
+  vertical-align: top;
 }
 .title span {
-  margin-left: 10px;
+  margin-left: 15px;
+  font-size: 0.16rem;
+  vertical-align: top;
 }
 ::v-deep .el-tabs__nav-scroll {
   width: 100% !important;

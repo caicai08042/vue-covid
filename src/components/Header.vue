@@ -1,21 +1,17 @@
 <template>
-    <div class="header"></div>
+  <div class="header">
+    <img src="../assets/1.jpg" />
+  </div>
 </template>
 <script>
 export default {
-  name: 'Header',
-}
+  name: "Header",
+};
 </script>
 <style scoped>
 .header {
-    position: relative;
-    width: 100%;
-    height: 0;
-    padding-top: 33.5%;
-    color: #fff;
-    font-size: 0.28rem;
-    text-align: center;
-    background: url(../assets/1.jpg) no-repeat;
-    background-size: cover;
+  height: 100%;
+  max-width: 820px;
+  margin: 0 auto;
 }
 </style>   
