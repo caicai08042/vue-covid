@@ -182,7 +182,7 @@ export default {
     },
   },
   mounted() {
-    console.log(this.numZore(-22))
+    //console.log(this.numZore(-22))
     
   },
   watch: {
