@@ -2,7 +2,7 @@
   <div class="keep">
     <el-divider content-position="center">版本信息</el-divider>
     <div class="footer">
-      <a target="_blank">v1.1.1</a>&nbsp;
+      <a target="_blank">{{this.edition}}</a>&nbsp;
       <a href="https://github.com/caicai08042/vue-covid" target="_blank"
         >Github地址</a
       >
@@ -12,6 +12,11 @@
 <script>
 export default {
   name: "Keeponrecord",
+  data(){
+    return{
+      edition:'v1.1.2'
+    }
+  }
 };
 </script>
 <style scoped>

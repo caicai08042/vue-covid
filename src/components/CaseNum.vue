@@ -134,7 +134,7 @@
       <div style="margin: 10px 0 0 15px; color: rgb(170, 170, 170)">
         <span
           ><i class="el-icon-warning-outline"></i>
-          数据来子第三方平台，可能与实际情况存在误差。</span
+          数据来自第三方数据平台，可能与实际情况存在误差。</span
         >
       </div>
     </el-card>
@@ -177,11 +177,14 @@ export default {
       if (num === 0) {
         return num;
       } else {
-        return num > 0 ? "+" + num : "-" + num;
+        return num > 0 ? "+" + num : "" + num;
       }
     },
   },
-  mounted() {},
+  mounted() {
+    console.log(this.numZore(-22))
+    
+  },
   watch: {
     covid() {
       this.loading = true;
